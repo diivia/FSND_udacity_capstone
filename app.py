@@ -15,7 +15,7 @@ def create_app(test_config=None):
         return jsonify({'message': 'Udacity Capestone Project'})
 
     @app.route('/movies')
-    @requires_auth(permission='get:movies')
+    #@requires_auth(permission='get:movies')
     def load_movies(self):
         try:
             movies = Movie.query.all()
