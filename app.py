@@ -16,7 +16,7 @@ def create_app(test_config=None):
 
     @app.route('/movies')
     #@requires_auth(permission='get:movies')
-    def load_movies(self):
+    def load_movies():
         try:
             movies = Movie.query.all()
 
