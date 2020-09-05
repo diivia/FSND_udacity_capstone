@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         self.database_path = "postgresql://localhost:5432/{}".format(self.database_name)
         setup_db(self.app, self.database_path)
 
-        self.director = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjhNTDFyQXlnNVFKMGV0UzI2ZjRlTiJ9.eyJpc3MiOiJodHRwczovL2ZzbmRqay5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYwMGJiMzliMzI3YjMwMDEzZWI5YTk5IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTkyMDg4MjAsImV4cCI6MTU5OTI5NTIyMCwiYXpwIjoiMGkwVnNoM0V0dXFud2VCQ2Qwczdud3B1WTd4R3hJbnYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvciIsImRlbGV0ZTpjYXN0aW5ncyIsImRlbGV0ZTptb3ZpZSIsImdldDphY3RvcnMiLCJnZXQ6Y2FzdGluZ3MiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6Y2FzdGluZ3MiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6Y2FzdGluZ3MiLCJwb3N0Om1vdmllcyJdfQ.IY4CuN-7OcjfPbA5Nyi_V2wf_7OfuAfY3QrnuPtU_Gzm5exwghwiF2FvsYmn02HM5sU2OaMfnW2TjoOB-Qn5UxPuWPMRbcDXNF9zo8iCaTt2fnHFfRdhTEK23jGlk6hPaR_aVwZbYbpjGHzAasEPFCHZ4rjIkxHjFWunQaSmxt1rV0KPK6et405D-4rWgkhRAFNJXE-cbrk1uf7BQW9C4Zu6hDQfszeKHqVdRKtQa1FrL9Y_qY1wZ4amrH9CmKMEVC0hSsEo9mecqGOcVzOfqoCzzFOR1NsGYoAD-_-VRN7xp4TWW2yhjYgsQPdL58lakl32RshWY4WIy1xAhbgCYA'
+        self.director = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjhNTDFyQXlnNVFKMGV0UzI2ZjRlTiJ9.eyJpc3MiOiJodHRwczovL2ZzbmRqay5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYwMGJiMzliMzI3YjMwMDEzZWI5YTk5IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTkzMjYwMzcsImV4cCI6MTU5OTQxMjQzNywiYXpwIjoiMGkwVnNoM0V0dXFud2VCQ2Qwczdud3B1WTd4R3hJbnYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvciIsImRlbGV0ZTpjYXN0aW5ncyIsImRlbGV0ZTptb3ZpZSIsImdldDphY3RvcnMiLCJnZXQ6Y2FzdGluZ3MiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6Y2FzdGluZ3MiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6Y2FzdGluZ3MiLCJwb3N0Om1vdmllcyJdfQ.AXo-03Xv38vGpsapdXju4NAokXxqKz84tgwxxpOwpZ1CRKY0XTMnZFOQki11NlDkbaXOHjpVGdnExfC8svEaBVwnWRCHIICmSxbf57SISWAJOWpB--f6KjjSpzL69EKo1rqgXj1nPYaOKzrEjUtAXN0sz83veXqj0DlTSDyeyC72wfxhCHKKc8Sb0aO9PkM0-K9MvMlxiYDzUvZnNnobbqmJEeH4HClT5oxFLFIIBvcDgV-9Bst4LH2E4YWKYxMZ-Camy8IJ8P2QP5FnMKoBgpjqkrU9Gc91SGRaEp9oG1xplF8RXE_TrV20ysizT06NsjIPN6-8EmH1cZrcJEnYvw'
         self.headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer '+ self.director}
 
         with self.app.app_context():
@@ -183,8 +183,8 @@ class MyTestCase(unittest.TestCase):
         self.setup_actor("Actor3")
         actors = [actor.format() for actor in Actor.query.all()]
         actor_id = actors[0]['id']
-        res = self.client().patch('/actors/{}'.format(actor_id), json={
-            'age': 22}, headers=self.headers)
+        res = self.client().patch('/actors/{}'.format(actor_id), json={'name': 'patched name',
+            'age': 122}, headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)

@@ -19,7 +19,7 @@ We recommend working within a virtual environment whenever using Python for proj
 
 #### PIP Dependencies
 
-Once you have your virtual environment setup and running, install dependencies by naviging to the `/backend` directory and running:
+Once you have your virtual environment setup and running, install dependencies by navigting to the `/backend` directory and running:
 
 ```bash
 pip install -r requirements.txt
@@ -42,9 +42,22 @@ source setup.sh
 ```
 
 ### Running the server
+Create Postgres database by typing in console `createdb capstone` 
 
-From within the `./src` directory first ensure you are working using your created virtual environment. To run the server, execute:
+From within the `./capstone` directory first ensure you are working using your created virtual environment. To create virtual env, execute: 
+```bash
+python3 -m venv env
+virtualenv env
+source env/bin/activate
+```
 
+From the `/capstone` directory to install dependencies, execute:
+
+```bash
+pip install -r requirements.txt
+```
+
+From within the `./capstone` directory to run the server, execute:
 ```bash
 export FLASK_APP=app
 export FLASK_ENV=development
@@ -324,8 +337,29 @@ DELETE '/castings/<int:casting_id>'
 Bearer token valid at time of submission:
 
 
+#### Roles-based access control (RBAC) 
+Two roles are created:
+* Casting Assistant - only can search for movies, actors and castings
+* Casting Director - has full access and permissions for CRUD 
+
+##### Getting token:
+To get token for casting director go to following URL:
+```bash
+https://fsndjk.eu.auth0.com/authorize?
+  audience=capstone&
+  response_type=token&
+  client_id=0i0Vsh3EtuqnweBCd0s7nwpuY7xGxInv&
+  redirect_uri=http://localhost:5000
+```
+Login with credentials for casting director:
+```bash
+- director@jkudacity.com
+- Password123 
+```
+And get tocken from response URL
+
 ### Backend
-The ./backend directory contains a completed Flask and SQLAlchemy server.
+The ./capstone directory contains a completed Flask and SQLAlchemy server.
 
 ### Frontend
 Frontend not implemented.
