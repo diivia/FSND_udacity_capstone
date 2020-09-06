@@ -63,11 +63,62 @@ export FLASK_APP=app
 export FLASK_ENV=development
 flask run
 ```
+
+
+#### Heroku URL
+
+```
+https://capstone-jk.herokuapp.com/
+```
+
+Bearer token valid at time of submission:
+Casting director
+```bash
+
+```
+
+Casting assistant
+```bash
+
+```
+
+#### Roles-based access control (RBAC) 
+Two roles are created:
+* Casting Assistant - only can search for movies, actors and castings
+* Casting Director - has full access and permissions for CRUD 
+
+##### Getting token:
+To get token for casting director and castin assistant go to following URL:
+```bash
+https://fsndjk.eu.auth0.com/authorize?audience=capstone&response_type=token&client_id=0i0Vsh3EtuqnweBCd0s7nwpuY7xGxInv&redirect_uri=https://capstone-jk.herokuapp.com
+
+```
+Login with credentials for casting director:
+```
+- director@jkudacity.com
+- Password123 
+```  
+Login with credentials for casting assistant:
+```bash
+ - assistant@jkudacity.com
+ - Password123
+```
+And get token from response URL
+
+### Backend
+The ./capstone directory contains a completed Flask and SQLAlchemy server.
+
+### Frontend
+Frontend not implemented.
  
 ## Endpoints
 ### Testing endpoints
 * Postman test collection included in the project folder with the bearer token for the Executive Producer authorization.
-* Unittests for endpoints are created using unittest library.
+* Unittests for endpoints are created using unittest library. To run unittests update `self.director` variable in `MyTestCase#setUp` for correct director bearer token from virtual env execute
+```bash                                                                                  
+ python test_app.py
+```
+
 ### API specification
 ```bash
 GET '/movies'
@@ -331,35 +382,3 @@ DELETE '/castings/<int:casting_id>'
     'message': "Unauthorized"
 }
 ```
-
-#### Heroku URL
-
-Bearer token valid at time of submission:
-
-
-#### Roles-based access control (RBAC) 
-Two roles are created:
-* Casting Assistant - only can search for movies, actors and castings
-* Casting Director - has full access and permissions for CRUD 
-
-##### Getting token:
-To get token for casting director go to following URL:
-```bash
-https://fsndjk.eu.auth0.com/authorize?
-  audience=capstone&
-  response_type=token&
-  client_id=0i0Vsh3EtuqnweBCd0s7nwpuY7xGxInv&
-  redirect_uri=http://localhost:5000
-```
-Login with credentials for casting director:
-```bash
-- director@jkudacity.com
-- Password123 
-```
-And get tocken from response URL
-
-### Backend
-The ./capstone directory contains a completed Flask and SQLAlchemy server.
-
-### Frontend
-Frontend not implemented.
