@@ -118,7 +118,7 @@ Frontend not implemented.
 curl https://capstone-jk.herokuapp.com/actors -X GET -H 'Authorization: Bearer <token>'
 ```  
 token should be replaced with valid token for Casting Director
-* Unittests for endpoints are created using unittest library. To run unittests update `self.director` variable in `MyTestCase#setUp` for correct director bearer token from virtual env execute
+* Unittests for endpoints are created using unittest library. To run unittests update `self.director` variable in `MyTestCase#setUp` for correct director bearer token and from virtual env execute
 ```bash                                                                                  
  python test_app.py
 ```
@@ -371,7 +371,7 @@ DELETE '/castings/<int:casting_id>'
 - 404 Not Found
 {
     'error': 404,
-    'message': "Not Found"
+    'message': "Resourse not Found"
 }
 
 - 400 Bad Request
@@ -383,6 +383,6 @@ DELETE '/castings/<int:casting_id>'
 - 401 Unauthorized
 {
 	'error': 401,
-    'message': "Unauthorized"
+    'message': "Unauthorized Error"
 }
 ```
