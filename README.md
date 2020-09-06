@@ -117,7 +117,7 @@ Frontend not implemented.
 ```bash
 curl https://capstone-jk.herokuapp.com/actors -X GET -H 'Authorization: Bearer <token>'
 ```  
-<token> should be replaced with valid token for Casting Director
+token should be replaced with valid token for Casting Director
 * Unittests for endpoints are created using unittest library. To run unittests update `self.director` variable in `MyTestCase#setUp` for correct director bearer token from virtual env execute
 ```bash                                                                                  
  python test_app.py
