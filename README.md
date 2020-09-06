@@ -74,12 +74,12 @@ https://capstone-jk.herokuapp.com/
 Bearer token valid at time of submission:
 Casting director
 ```bash
-
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjhNTDFyQXlnNVFKMGV0UzI2ZjRlTiJ9.eyJpc3MiOiJodHRwczovL2ZzbmRqay5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWY1M2NhODdhZTI0MzcwMDZkOGE5ODZhIiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTk0MTQ2MzksImV4cCI6MTU5OTUwMTAzOSwiYXpwIjoiMGkwVnNoM0V0dXFud2VCQ2Qwczdud3B1WTd4R3hJbnYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvciIsImRlbGV0ZTpjYXN0aW5ncyIsImRlbGV0ZTptb3ZpZSIsImdldDphY3RvcnMiLCJnZXQ6Y2FzdGluZ3MiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6Y2FzdGluZ3MiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6Y2FzdGluZ3MiLCJwb3N0Om1vdmllcyJdfQ.lG9b6tX06q5EO2RxDaeHPvQNkn6pRPH3XoRmY_DlODsQN_V71EO3sLqCviBhwM1Zgn6Eg_eUq6uQjuA96_biBTWNgSl2B6_wQCQItDIoLFZEa949m8VSx0ZY_iEunNloe2PVu2LSOxOhdzWZ2Y0YG1-xdC2sFZ0VZSeGxTKjav7r9LUenyis6UJwqKkRs6HPJKDFDrBfrvOwG1AM29_yS6eZ0VAag7aXQrkTEMHUtMJ39ioA4-fHv81mdujQfi0jNSSPwFYnrnFbZQKKjIzklE2pCtISMK_SX4jlB2SGEPF5jK56_p_446Q4H9v2fxCxy3NTHdFUlzOzy_Chy-I04w
 ```
 
 Casting assistant
 ```bash
-
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjhNTDFyQXlnNVFKMGV0UzI2ZjRlTiJ9.eyJpc3MiOiJodHRwczovL2ZzbmRqay5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWY1NTBhYWM3M2NjMjgwMDZkMzA3Y2Q3IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTk0MTQyNTYsImV4cCI6MTU5OTUwMDY1NiwiYXpwIjoiMGkwVnNoM0V0dXFud2VCQ2Qwczdud3B1WTd4R3hJbnYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDphY3RvcnMiLCJnZXQ6Y2FzdGluZ3MiLCJnZXQ6bW92aWVzIl19.a28FqGuztBN_vyR7iS7KZvpGZD0Vt2fcKKKcwr16SRNTu7E_43Cfdq2JB4ezUYemtlTiRFm0NaBDSo7O-50NfbSWKfIrJBOrYpCSAe-SP0WBsU85oB3Sn2-AuuXgC7IvemOB-OtdrdcLKfYVrhKpMngihF589hqdKVihJ3oVFzsJSKQ3om0hnFW0ghXuAK2-XGidDhHz6fO-KUUwgL6j-_POEuwuJpESOXWYnmGNrZswc7FL-ezzYk7Ki8U5RZKZyidz4l90TdQIQe3M0v71YnRyspBJWSls5l82OQN7-rnxl6Y9a7IV75PQz0h3kyN8RoSWJsvzv7RoNZbk-fd-6w
 ```
 
 #### Roles-based access control (RBAC) 
@@ -91,7 +91,6 @@ Two roles are created:
 To get token for casting director and castin assistant go to following URL:
 ```bash
 https://fsndjk.eu.auth0.com/authorize?audience=capstone&response_type=token&client_id=0i0Vsh3EtuqnweBCd0s7nwpuY7xGxInv&redirect_uri=https://capstone-jk.herokuapp.com
-
 ```
 Login with credentials for casting director:
 ```
@@ -113,7 +112,12 @@ Frontend not implemented.
  
 ## Endpoints
 ### Testing endpoints
-* Postman test collection included in the project folder with the bearer token for the Executive Producer authorization.
+* Postman test collection included in the project folder with the bearer token for the Casting Director and Cating Assistant authorizations.
+* It's possible to test endpoints with curl request, for example:
+```bash
+curl https://capstone-jk.herokuapp.com/actors -X GET -H 'Authorization: Bearer <token>'
+```  
+<token> should be replaced with valid token for Casting Director
 * Unittests for endpoints are created using unittest library. To run unittests update `self.director` variable in `MyTestCase#setUp` for correct director bearer token from virtual env execute
 ```bash                                                                                  
  python test_app.py
